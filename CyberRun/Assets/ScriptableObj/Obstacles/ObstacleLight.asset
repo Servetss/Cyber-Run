@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 299da506ecf56c245bc40d482811ccc9, type: 3}
+  m_Name: ObstacleLight
+  m_EditorClassIdentifier: 
+  Obstacle: {fileID: 6236751828006411296, guid: 6775a658fb08ca849883a51e58e9a354,
+    type: 3}
+  ObstacleMaterial: {fileID: 2100000, guid: d173fed8b6c545046a7776923f464b68, type: 2}
