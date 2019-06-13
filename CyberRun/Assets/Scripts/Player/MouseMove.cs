@@ -78,32 +78,52 @@ public class MouseMove : MonoBehaviour
                 MouseClickPos = Input.mousePosition;
             }
 
-            if ((Input.mousePosition.y < MouseClickPos.y + 30 && Input.mousePosition.y > MouseClickPos.y - 30) && Input.mousePosition.x > MouseClickPos.x + 10 && PlayerPositionX < 1 && _Move == Move.Stay) // Move Right
+            if (CanUpDown) // Move Player Left - Right if Level 3 (LevelUpDown/ Two platforms)
             {
-                //print("Right");
-                _Move = Move.Right;
-                PlayerPositionX++;
-                MoveFunc();
+                if ((Input.mousePosition.y < MouseClickPos.y + 30 && Input.mousePosition.y > MouseClickPos.y - 30) && Input.mousePosition.x > MouseClickPos.x + 10 && PlayerPositionX < 1 && _Move == Move.Stay) // Move Right
+                {
+                    //print("Right");
+                    _Move = Move.Right;
+                    PlayerPositionX++;
+                    MoveFunc();
+                }
+                else if ((Input.mousePosition.y < MouseClickPos.y + 30 && Input.mousePosition.y > MouseClickPos.y - 30) && Input.mousePosition.x < MouseClickPos.x - 10 && PlayerPositionX > -1 && _Move == Move.Stay) // Move Left
+                {
+                    _Move = Move.Left;
+                    PlayerPositionX--;
+                    MoveFunc();
+                }
+                else if (Input.mousePosition.y > MouseClickPos.y + 8 && PlayerPositionY < 1 && _Move == Move.Stay && CanUpDown) // Move Up
+                {
+                    physic.useGravity = false;
+                    _Move = Move.Up;
+                    PlayerPositionY++;
+                    MoveFunc();
+                }
+                else if (Input.mousePosition.y < MouseClickPos.y - 8 && PlayerPositionY > 0 && _Move == Move.Stay && CanUpDown) // Move Down
+                {
+                    _Move = Move.Down;
+                    PlayerPositionY--;
+                    MoveFunc();
+                }
             }
-            else if ((Input.mousePosition.y < MouseClickPos.y + 30 && Input.mousePosition.y > MouseClickPos.y - 30) && Input.mousePosition.x < MouseClickPos.x - 10 && PlayerPositionX > -1 && _Move == Move.Stay) // Move Left
+            else
             {
-                _Move = Move.Left;
-                PlayerPositionX--;
-                MoveFunc();
+                if (Input.mousePosition.x > MouseClickPos.x + 10 && PlayerPositionX < 1 && _Move == Move.Stay) // Move Right
+                {
+                    //print("Right");
+                    _Move = Move.Right;
+                    PlayerPositionX++;
+                    MoveFunc();
+                }
+                else if (Input.mousePosition.x < MouseClickPos.x - 10 && PlayerPositionX > -1 && _Move == Move.Stay) // Move Left
+                {
+                    _Move = Move.Left;
+                    PlayerPositionX--;
+                    MoveFunc();
+                }
             }
-            else if (Input.mousePosition.y > MouseClickPos.y + 8 && PlayerPositionY < 1 && _Move == Move.Stay && CanUpDown) // Move Up
-            {
-                physic.useGravity = false;
-                _Move = Move.Up;
-                PlayerPositionY++;
-                MoveFunc();
-            }
-            else if (Input.mousePosition.y < MouseClickPos.y - 8 && PlayerPositionY > 0 && _Move == Move.Stay && CanUpDown) // Move Down
-            {
-                _Move = Move.Down;
-                PlayerPositionY--;
-                MoveFunc();
-            }
+
 
         }
 

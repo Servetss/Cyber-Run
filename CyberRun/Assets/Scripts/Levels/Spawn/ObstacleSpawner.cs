@@ -89,7 +89,7 @@ public class ObstacleSpawner : MonoBehaviour
         do
             SpawnType = Random.Range(0, 4);
         while (SpawnType == 4 && SaveSpawnType == 4);
-        
+
 
         ST.SetPlatform(Player.GetComponent<Player>().PlatformSpawn, SpawnType);
 
@@ -107,6 +107,7 @@ public class ObstacleSpawner : MonoBehaviour
         {
             LM.ChangeCamera();
             Player.GetComponent<MouseMove>().UpDown(true);
+
         }              // Set Camera in down position When Platform collision Overllap
         else if (!LM.GetNormalPos())
         {
